@@ -23,7 +23,17 @@ body {
   flex-direction: column;
   outline: 1px solid whitesmoke;
   box-shadow: 2px 4px 6px rgb(114, 110, 110);
-  width: 40%;
+  width: 70%;
+}
+
+.title-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid grey;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .header-title {
@@ -32,18 +42,41 @@ body {
   text-transform: capitalize;
   order: 1;
   position: relative;
+  width: 70%;
+  justify-content: flex-start;
+  order: 1;
+}
+
+.sync {
+  order: 2;
+}
+
+.inputdiv {
   width: 100%;
-  justify-content: center;
-  margin-top: 10px;
-  border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
+  order: 2;
+  column-gap: 10px;
+  align-items: center;
+  padding: 12px 10px;
 }
 
 .add-todo {
-  order: 2;
+  order: 1;
   margin: 10px;
-  padding: 10px;
   border: none;
   outline: none;
+  width: 80%;
+  font-size: 20px;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+.enter {
+  order: 2;
+  display: flex;
+  transform: scale(1.5);
+  color: #0f0;
 }
 
 .list-cont {
@@ -83,34 +116,36 @@ body {
   padding: 10px;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
-}
-
-.to-do input {
-  width: 10%;
-}
-
-.todo-cont {
-  width: 80%;
-}
-
-.todo-cont input {
   width: 100%;
-  display: none;
 }
 
-.todo-cont p {
-  font-size: 20px;
+.check {
+  width: 10%;
+  order: 1;
+}
+
+.task {
+  width: 80%;
+  display: flex;
   text-transform: capitalize;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  background-color: inherit;
+  order: 2;
+  word-wrap: break-word;
 }
 
 .btn-cont {
   width: 10%;
   display: flex;
   justify-content: flex-end;
+  order: 3;
 }
 
 .trash {
   display: none;
+  color: rgba(245, 94, 94, 0.945);
 }
 
 .menu {
