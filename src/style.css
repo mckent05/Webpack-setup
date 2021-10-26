@@ -1,6 +1,7 @@
 @font-face {
   font-family: "MyFont";
-  src: url("./my-font.woff2") format("woff2"), url("./my-font.woff") format("woff");
+  src: url("./my-font.woff2") format("woff2"),
+    url("./my-font.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -12,9 +13,13 @@
 
 body {
   max-width: 100vw;
+}
+
+.main {
   justify-content: center;
   align-items: center;
   display: flex;
+  width: 100%;
 }
 
 .container {
