@@ -30,6 +30,16 @@ body {
   width: 70%;
 }
 
+.strike {
+  text-decoration: line-through;
+  font-style: italic;
+  color: grey;
+}
+
+.remove-edit .btn-cont {
+  display: none;
+}
+
 .title-cont {
   display: flex;
   justify-content: space-between;

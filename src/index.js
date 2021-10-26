@@ -1,6 +1,7 @@
 import './style.css';
+import { taskCompleted, localstorage } from './list.js';
 
-const toDoList = [
+let toDoList = [
   {
     description: 'i want to be great',
     index: 4,
@@ -81,6 +82,12 @@ const createToDo = (index) => {
   checkBox.type = 'checkbox';
   list.appendChild(checkBox);
 
+  checkBox.addEventListener('change', (e) => {
+    taskCompleted(toDoList, index, e)
+    localstorage(toDoList)
+    
+  })
+
   const btnDiv = document.createElement('div');
   btnDiv.classList.add('btn-cont');
   list.appendChild(btnDiv);
@@ -112,5 +119,12 @@ const displayToDo = () => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  displayToDo();
+  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    toDoList = JSON.parse(localStorage.getItem('completedtask'))
+    displayToDo()
+  }else {
+    displayToDo()
+    localstorage(toDoList)
+  }
 });
+
