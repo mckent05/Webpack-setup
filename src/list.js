@@ -28,6 +28,4 @@ const addToLocalStorage = (list) => {
   localStorage.setItem('completedtask', JSON.stringify(completed));
 };
 
-
-
 export { taskCompleted, addToLocalStorage as localstorage, displayAlert };
