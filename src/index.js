@@ -1,15 +1,4 @@
 import './style.css';
-import { library, dom } from '@fortawesome/fontawesome-svg-core';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
-import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
-import { faSyncAlt } from '@fortawesome/free-solid-svg-icons/faSyncAlt';
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons/faSignInAlt';
-
-library.add(faEllipsisV);
-library.add(faTrash);
-library.add(faSyncAlt);
-library.add(faSignInAlt);
-dom.watch();
 
 const toDoList = [
   {
