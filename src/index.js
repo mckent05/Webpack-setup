@@ -1,4 +1,3 @@
-
 import './style.css';
 import { library, dom } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons/faEllipsisV';
@@ -80,7 +79,7 @@ const enterIcon = document.createElement('i');
 enterIcon.classList.add('fa', 'fa-sign-in-alt', 'enter');
 inputDiv.appendChild(enterIcon);
 
-let createToDo = (index) => {
+const createToDo = (index) => {
   const list = document.createElement('li');
   list.setAttribute('draggable', 'true');
   list.classList.add('to-do');
@@ -112,13 +111,14 @@ let createToDo = (index) => {
 };
 
 const displayToDo = () => {
-  for (let i = 0; i < toDoList.length; i++) {
-    toDoList.map((item) => {
-      if (item.index === i) {
-        const myIndex = toDoList.indexOf(item);
-        createToDo(myIndex);
+  for (let i = 0; i < toDoList.length; i += 1) {
+    toDoList.forEach((item) => {
+      if(item.index === i) {
+        const myIndex = toDoList.indexOf(item)
+        createToDo(myIndex)
       }
-    });
+    })
+    
   }
 };
 
