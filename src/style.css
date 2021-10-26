@@ -36,10 +36,6 @@ body {
   color: grey;
 }
 
-.remove-edit .btn-cont {
-  display: none;
-}
-
 .title-cont {
   display: flex;
   justify-content: space-between;
@@ -167,4 +163,8 @@ body {
 
 .to-do:nth-child(even) {
   background-color: rgb(233, 220, 220);
+}
+
+.remove-edit .btn-cont {
+  display: none;
 }

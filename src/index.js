@@ -4,27 +4,27 @@ import { taskCompleted, localstorage } from './list.js';
 let toDoList = [
   {
     description: 'i want to be great',
-    index: 4,
+    index: 5,
     completed: false,
   },
   {
     description: 'i want to laugh',
-    index: 3,
+    index: 4,
     completed: false,
   },
   {
     description: 'i want to have fun',
-    index: 2,
+    index: 3,
     completed: false,
   },
   {
     description: 'i want to run',
-    index: 1,
+    index: 2,
     completed: false,
   },
   {
     description: 'i want to box',
-    index: 0,
+    index: 1,
     completed: false,
   },
 ];
@@ -83,10 +83,9 @@ const createToDo = (index) => {
   list.appendChild(checkBox);
 
   checkBox.addEventListener('change', (e) => {
-    taskCompleted(toDoList, index, e)
-    localstorage(toDoList)
-    
-  })
+    taskCompleted(toDoList, index, e);
+    localstorage(toDoList);
+  });
 
   const btnDiv = document.createElement('div');
   btnDiv.classList.add('btn-cont');
@@ -108,7 +107,7 @@ const createToDo = (index) => {
 };
 
 const displayToDo = () => {
-  for (let i = 0; i < toDoList.length; i += 1) {
+  for (let i = 1; i <= toDoList.length + 1; i += 1) {
     toDoList.forEach((item) => {
       if (item.index === i) {
         const myIndex = toDoList.indexOf(item);
@@ -120,11 +119,10 @@ const displayToDo = () => {
 
 window.addEventListener('DOMContentLoaded', () => {
   if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-    toDoList = JSON.parse(localStorage.getItem('completedtask'))
-    displayToDo()
-  }else {
-    displayToDo()
-    localstorage(toDoList)
+    toDoList = JSON.parse(localStorage.getItem('completedtask'));
+    displayToDo();
+  } else {
+    displayToDo();
+    localstorage(toDoList);
   }
 });
-
