@@ -9,6 +9,10 @@ const displayAlert = (message, action) => {
   }, 3000);
 };
 
+const addToLocalStorage = (list) => {
+  localStorage.setItem('toDo', JSON.stringify(list));
+};
+
 const taskCompleted = (list, index, e) => {
   list[index].completed = e.currentTarget.checked;
   const inner = e.currentTarget.nextSibling.nextSibling;
@@ -21,11 +25,6 @@ const taskCompleted = (list, index, e) => {
     inner.classList.remove('strike');
     parent.classList.remove('remove-edit');
   }
-};
-
-const addToLocalStorage = (list) => {
-  const completed = list.filter((item) => item.completed === false);
-  localStorage.setItem('completedtask', JSON.stringify(completed));
 };
 
 export { taskCompleted, addToLocalStorage as localstorage, displayAlert };

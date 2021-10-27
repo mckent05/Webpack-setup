@@ -107,7 +107,7 @@ const createToDo = (doList, index) => {
 };
 
 const displayToDo = (list) => {
-  for (let i = 1; i <= list.length + 5; i += 1) {
+  for (let i = 1; i <= list.length; i += 1) {
     list.forEach((item) => {
       if (item.index === i) {
         const myIndex = list.indexOf(item);
@@ -117,14 +117,21 @@ const displayToDo = (list) => {
   }
 };
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', (e) => {
   if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-    toDoList = JSON.parse(localStorage.getItem('completedtask'));
+    toDoList = JSON.parse(localStorage.getItem('toDo'));
     displayToDo(toDoList);
-    if (container.children.length === 0) {
-      displayAlert('all tasks have been completed', 'success');
-      clear.classList.add('hide-btn');
-    }
+    const tasks = document.querySelectorAll('.task');
+    toDoList.forEach((item) => {
+      if (item.completed === true) {
+        let b = item.description;
+        tasks.forEach((task) => {
+          if (task.value === b) {
+            task.classList.add('strike');
+          }
+        });
+      }
+    });
   } else {
     displayToDo(toDoList);
     localstorage(toDoList);
