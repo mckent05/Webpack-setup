@@ -19,15 +19,39 @@ body {
   align-items: center;
   display: flex;
   width: 100%;
+  flex-direction: column;
+}
+
+.alert {
+  margin-top: 40px;
+  text-transform: capitalize;
+  font-size: 25px;
+  display: none;
+}
+
+.alert-success {
+  color: #0f0;
+  display: flex;
+}
+
+.alert-danger {
+  color: rgb(230, 54, 54);
+  display: flex;
 }
 
 .container {
   display: flex;
-  margin: 5% auto;
+  margin: 2% auto;
   flex-direction: column;
   outline: 1px solid whitesmoke;
   box-shadow: 2px 4px 6px rgb(114, 110, 110);
   width: 70%;
+}
+
+.strike {
+  text-decoration: line-through;
+  font-style: italic;
+  color: grey;
 }
 
 .title-cont {
@@ -106,6 +130,10 @@ body {
   margin: 0 auto;
 }
 
+.hide-btn {
+  display: none;
+}
+
 .clr-todo:hover {
   text-decoration: underline;
   color: black;
@@ -157,4 +185,8 @@ body {
 
 .to-do:nth-child(even) {
   background-color: rgb(233, 220, 220);
+}
+
+.remove-edit .btn-cont {
+  display: none;
 }

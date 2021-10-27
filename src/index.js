@@ -1,29 +1,30 @@
 import './style.css';
+import { taskCompleted, localstorage } from './list.js';
 
-const toDoList = [
+let toDoList = [
   {
     description: 'i want to be great',
-    index: 4,
-    completed: false,
-  },
-  {
-    description: 'i want to laugh',
     index: 3,
     completed: false,
   },
   {
-    description: 'i want to have fun',
-    index: 2,
+    description: 'i want to laugh',
+    index: 5,
     completed: false,
   },
   {
-    description: 'i want to run',
+    description: 'i want to have fun',
     index: 1,
     completed: false,
   },
   {
+    description: 'i want to run',
+    index: 4,
+    completed: false,
+  },
+  {
     description: 'i want to box',
-    index: 0,
+    index: 2,
     completed: false,
   },
 ];
@@ -69,7 +70,7 @@ const enterIcon = document.createElement('i');
 enterIcon.classList.add('fa', 'fa-sign-in-alt', 'enter');
 inputDiv.appendChild(enterIcon);
 
-const createToDo = (index) => {
+const createToDo = (doList, index) => {
   const list = document.createElement('li');
   list.setAttribute('draggable', 'true');
   list.classList.add('to-do');
@@ -77,9 +78,14 @@ const createToDo = (index) => {
 
   const checkBox = document.createElement('input');
   checkBox.classList.add('check');
-  checkBox.checked = toDoList[index].completed;
+  checkBox.checked = doList[index].completed;
   checkBox.type = 'checkbox';
   list.appendChild(checkBox);
+
+  checkBox.addEventListener('change', (e) => {
+    taskCompleted(toDoList, index, e);
+    localstorage(toDoList);
+  });
 
   const btnDiv = document.createElement('div');
   btnDiv.classList.add('btn-cont');
@@ -88,7 +94,7 @@ const createToDo = (index) => {
   const input = document.createElement('input');
   input.classList.add('task');
   input.readOnly = true;
-  input.value = toDoList[index].description;
+  input.value = doList[index].description;
   list.appendChild(input);
 
   const icon = document.createElement('i');
@@ -100,17 +106,34 @@ const createToDo = (index) => {
   btnDiv.appendChild(icon2);
 };
 
-const displayToDo = () => {
-  for (let i = 0; i < toDoList.length; i += 1) {
-    toDoList.forEach((item) => {
+const displayToDo = (list) => {
+  for (let i = 1; i <= list.length; i += 1) {
+    list.forEach((item) => {
       if (item.index === i) {
-        const myIndex = toDoList.indexOf(item);
-        createToDo(myIndex);
+        const myIndex = list.indexOf(item);
+        createToDo(list, myIndex);
       }
     });
   }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  displayToDo();
+  if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+    toDoList = JSON.parse(localStorage.getItem('toDo'));
+    displayToDo(toDoList);
+    const tasks = document.querySelectorAll('.task');
+    toDoList.forEach((item) => {
+      if (item.completed === true) {
+        const b = item.description;
+        tasks.forEach((task) => {
+          if (task.value === b) {
+            task.classList.add('strike');
+          }
+        });
+      }
+    });
+  } else {
+    displayToDo(toDoList);
+    localstorage(toDoList);
+  }
 });
