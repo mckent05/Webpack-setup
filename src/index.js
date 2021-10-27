@@ -1,5 +1,5 @@
 import './style.css';
-import { taskCompleted, localstorage, displayAlert } from './list.js';
+import { taskCompleted, localstorage } from './list.js';
 
 let toDoList = [
   {
@@ -117,14 +117,14 @@ const displayToDo = (list) => {
   }
 };
 
-window.addEventListener('DOMContentLoaded', (e) => {
+window.addEventListener('DOMContentLoaded', () => {
   if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
     toDoList = JSON.parse(localStorage.getItem('toDo'));
     displayToDo(toDoList);
     const tasks = document.querySelectorAll('.task');
     toDoList.forEach((item) => {
       if (item.completed === true) {
-        let b = item.description;
+        const b = item.description;
         tasks.forEach((task) => {
           if (task.value === b) {
             task.classList.add('strike');
