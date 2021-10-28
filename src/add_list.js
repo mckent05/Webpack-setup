@@ -1,4 +1,4 @@
-import { localstorage } from './list.js';
+import { displayAlert, localstorage } from './list.js';
 
 const addTask = (description, completed, index) => {
   const toDo = { description, completed, index };
@@ -36,6 +36,7 @@ const deleteToDo = (list, e) => {
   list = list.filter((item) => item.description !== desc);
   reArrangeIndex(list);
   localstorage(list);
+  displayAlert('Task deleted', 'danger', 8000);
   window.location.reload();
 };
 

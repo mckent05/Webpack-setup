@@ -1,12 +1,12 @@
 const alert = document.querySelector('.alert');
 
-const displayAlert = (message, action) => {
+const displayAlert = (message, action, time) => {
   alert.innerHTML = message;
   alert.classList.add(`alert-${action}`);
   setTimeout(() => {
     alert.innerHTML = '';
     alert.classList.remove(`alert-${action}`);
-  }, 3000);
+  }, time);
 };
 
 const addToLocalStorage = (list) => {
@@ -20,7 +20,7 @@ const taskCompleted = (list, index, e) => {
   if (e.currentTarget.checked === true) {
     inner.classList.add('strike');
     parent.classList.add('remove-edit');
-    displayAlert('great job! task completed', 'success');
+    displayAlert('great job! task completed', 'success', 3000);
   } else {
     inner.classList.remove('strike');
     parent.classList.remove('remove-edit');
