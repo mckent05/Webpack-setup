@@ -179,6 +179,14 @@ body {
   color: rgba(245, 94, 94, 0.945);
 }
 
+.show-trash .trash {
+  display: flex;
+}
+
+.show-trash .menu {
+  display: none;
+}
+
 .menu {
   cursor: move;
 }

@@ -27,4 +27,4 @@ const taskCompleted = (list, index, e) => {
   }
 };
 
-export { taskCompleted, addToLocalStorage as localstorage };
+export { taskCompleted, addToLocalStorage as localstorage, displayAlert };

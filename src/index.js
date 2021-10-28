@@ -1,33 +1,8 @@
 import './style.css';
-import { taskCompleted, localstorage } from './list.js';
+import { taskCompleted, localstorage, displayAlert } from './list.js';
+import { addTask, editToDo, deleteToDo, clearCompleted } from './add_list.js';
 
-let toDoList = [
-  {
-    description: 'i want to be great',
-    index: 3,
-    completed: false,
-  },
-  {
-    description: 'i want to laugh',
-    index: 5,
-    completed: false,
-  },
-  {
-    description: 'i want to have fun',
-    index: 1,
-    completed: false,
-  },
-  {
-    description: 'i want to run',
-    index: 4,
-    completed: false,
-  },
-  {
-    description: 'i want to box',
-    index: 2,
-    completed: false,
-  },
-];
+let toDoList = [];
 
 const main = document.querySelector('.main');
 
@@ -66,6 +41,14 @@ enterInput.classList.add('add-todo');
 enterInput.placeholder = 'Add to your list ...';
 inputDiv.appendChild(enterInput);
 
+enterInput.addEventListener('change', () => {
+  let index = toDoList.length;
+  toDoList.push(addTask(enterInput.value, false, index + 1));
+  createToDo(toDoList, index);
+  localstorage(toDoList);
+  enterInput.value = '';
+});
+
 const enterIcon = document.createElement('i');
 enterIcon.classList.add('fa', 'fa-sign-in-alt', 'enter');
 inputDiv.appendChild(enterIcon);
@@ -85,6 +68,7 @@ const createToDo = (doList, index) => {
   checkBox.addEventListener('change', (e) => {
     taskCompleted(toDoList, index, e);
     localstorage(toDoList);
+    btnDiv.classList.remove('show-trash');
   });
 
   const btnDiv = document.createElement('div');
@@ -104,10 +88,24 @@ const createToDo = (doList, index) => {
   const icon2 = document.createElement('i');
   icon2.classList.add('fas', 'fa-ellipsis-v', 'menu');
   btnDiv.appendChild(icon2);
+
+  list.addEventListener('click', (e) => {
+    btnDiv.classList.add('show-trash');
+    editToDo(toDoList, input, e, icon);
+  });
+
+  icon.addEventListener('click', (e) => {
+    deleteToDo(toDoList, e);
+  });
+
+  clear.addEventListener('click', () => {
+    clearCompleted(toDoList);
+  });
 };
 
+
 const displayToDo = (list) => {
-  for (let i = 1; i <= list.length; i += 1) {
+  for (let i = 0; i <= list.length + 5; i += 1) {
     list.forEach((item) => {
       if (item.index === i) {
         const myIndex = list.indexOf(item);
@@ -119,7 +117,9 @@ const displayToDo = (list) => {
 
 window.addEventListener('DOMContentLoaded', () => {
   if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
-    toDoList = JSON.parse(localStorage.getItem('toDo'));
+    toDoList = localStorage.getItem('toDo')
+      ? JSON.parse(localStorage.getItem('toDo'))
+      : [];
     displayToDo(toDoList);
     const tasks = document.querySelectorAll('.task');
     toDoList.forEach((item) => {
