@@ -6,8 +6,6 @@ import {
 
 let toDoList = [];
 
-const main = document.querySelector('.main');
-
 const element = document.createElement('div');
 element.classList.add('container');
 main.appendChild(element);
