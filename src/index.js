@@ -6,8 +6,6 @@ import {
 
 let toDoList = [];
 
-const main = document.querySelector('.main');
-
 const element = document.createElement('div');
 element.classList.add('container');
 main.appendChild(element);
@@ -16,6 +14,10 @@ const clear = document.createElement('button');
 clear.classList.add('clr-todo');
 clear.innerHTML = 'clear all completed';
 element.appendChild(clear);
+
+const container = document.createElement('ul');
+container.classList.add('list-cont');
+element.appendChild(container);
 
 const createToDo = (doList, index) => {
   const list = document.createElement('li');
@@ -66,10 +68,6 @@ const createToDo = (doList, index) => {
     clearCompleted(toDoList);
   });
 };
-
-const container = document.createElement('ul');
-container.classList.add('list-cont');
-element.appendChild(container);
 
 const inputDiv = document.createElement('div');
 inputDiv.classList.add('inputdiv');
