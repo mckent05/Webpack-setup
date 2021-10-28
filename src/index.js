@@ -17,6 +17,10 @@ clear.classList.add('clr-todo');
 clear.innerHTML = 'clear all completed';
 element.appendChild(clear);
 
+const container = document.createElement('ul');
+container.classList.add('list-cont');
+element.appendChild(container);
+
 const createToDo = (doList, index) => {
   const list = document.createElement('li');
   list.setAttribute('draggable', 'true');
@@ -66,10 +70,6 @@ const createToDo = (doList, index) => {
     clearCompleted(toDoList);
   });
 };
-
-const container = document.createElement('ul');
-container.classList.add('list-cont');
-element.appendChild(container);
 
 const inputDiv = document.createElement('div');
 inputDiv.classList.add('inputdiv');
