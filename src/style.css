@@ -179,8 +179,16 @@ body {
   color: rgba(245, 94, 94, 0.945);
 }
 
+.show-trash .trash {
+  display: flex;
+}
+
 .menu {
   cursor: move;
+}
+
+.show-trash .menu {
+  display: none;
 }
 
 .to-do:nth-child(even) {
