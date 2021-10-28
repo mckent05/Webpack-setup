@@ -1,5 +1,7 @@
 import './style.css';
-import { taskCompleted, localstorage } from './list.js';
+import { 
+  taskCompleted, localstorage, displayAlert,
+} from './list.js';
 import {
   addTask, editToDo, deleteToDo, clearCompleted,
 } from './add_list.js';
@@ -98,6 +100,7 @@ enterInput.addEventListener('change', () => {
   toDoList.push(addTask(enterInput.value, false, index + 1));
   createToDo(toDoList, index);
   localstorage(toDoList);
+  displayAlert('Your task has been added', 'success', 3000);
   enterInput.value = '';
 });
 
