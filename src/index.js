@@ -1,10 +1,60 @@
 import './style.css';
 import { taskCompleted, localstorage } from './list.js';
 import {
-   addTask, editToDo, deleteToDo, clearCompleted
-   } from './add_list.js';
+  addTask, editToDo, deleteToDo, clearCompleted,
+} from './add_list.js';
 
 let toDoList = [];
+
+const createToDo = (doList, index) => {
+  const list = document.createElement('li');
+  list.setAttribute('draggable', 'true');
+  list.classList.add('to-do');
+  container.appendChild(list);
+
+  const checkBox = document.createElement('input');
+  checkBox.classList.add('check');
+  checkBox.checked = doList[index].completed;
+  checkBox.type = 'checkbox';
+  list.appendChild(checkBox);
+
+  const btnDiv = document.createElement('div');
+  btnDiv.classList.add('btn-cont');
+  list.appendChild(btnDiv);
+
+  checkBox.addEventListener('change', (e) => {
+    taskCompleted(toDoList, index, e);
+    localstorage(toDoList);
+    btnDiv.classList.remove('show-trash');
+  });
+
+  const input = document.createElement('input');
+  input.classList.add('task');
+  input.readOnly = true;
+  input.value = doList[index].description;
+  list.appendChild(input);
+
+  const icon = document.createElement('i');
+  icon.classList.add('fas', 'fa-trash', 'trash');
+  btnDiv.appendChild(icon);
+
+  const icon2 = document.createElement('i');
+  icon2.classList.add('fas', 'fa-ellipsis-v', 'menu');
+  btnDiv.appendChild(icon2);
+
+  list.addEventListener('click', (e) => {
+    btnDiv.classList.add('show-trash');
+    editToDo(toDoList, input, e, icon);
+  });
+
+  icon.addEventListener('click', (e) => {
+    deleteToDo(toDoList, e);
+  });
+
+  clear.addEventListener('click', () => {
+    clearCompleted(toDoList);
+  });
+};
 
 const main = document.querySelector('.main');
 
@@ -65,56 +115,6 @@ const displayToDo = (list) => {
 const enterIcon = document.createElement('i');
 enterIcon.classList.add('fa', 'fa-sign-in-alt', 'enter');
 inputDiv.appendChild(enterIcon);
-
-const createToDo = (doList, index) => {
-  const list = document.createElement('li');
-  list.setAttribute('draggable', 'true');
-  list.classList.add('to-do');
-  container.appendChild(list);
-
-  const checkBox = document.createElement('input');
-  checkBox.classList.add('check');
-  checkBox.checked = doList[index].completed;
-  checkBox.type = 'checkbox';
-  list.appendChild(checkBox);
-
-  const btnDiv = document.createElement('div');
-  btnDiv.classList.add('btn-cont');
-  list.appendChild(btnDiv);
-
-  checkBox.addEventListener('change', (e) => {
-    taskCompleted(toDoList, index, e);
-    localstorage(toDoList);
-    btnDiv.classList.remove('show-trash');
-  });
-
-  const input = document.createElement('input');
-  input.classList.add('task');
-  input.readOnly = true;
-  input.value = doList[index].description;
-  list.appendChild(input);
-
-  const icon = document.createElement('i');
-  icon.classList.add('fas', 'fa-trash', 'trash');
-  btnDiv.appendChild(icon);
-
-  const icon2 = document.createElement('i');
-  icon2.classList.add('fas', 'fa-ellipsis-v', 'menu');
-  btnDiv.appendChild(icon2);
-
-  list.addEventListener('click', (e) => {
-    btnDiv.classList.add('show-trash');
-    editToDo(toDoList, input, e, icon);
-  });
-
-  icon.addEventListener('click', (e) => {
-    deleteToDo(toDoList, e);
-  });
-
-  clear.addEventListener('click', () => {
-    clearCompleted(toDoList);
-  });
-};
 
 window.addEventListener('DOMContentLoaded', () => {
   if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {

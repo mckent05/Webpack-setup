@@ -6,8 +6,7 @@ const addTask = (description, completed, index) => {
 };
 
 const editToDo = (list, input, e) => {
-  const target = e.target;
-  if (target.classList.contains('task')) {
+  if (e.target.classList.contains('task')) {
     input.readOnly = false;
     const task = input.value;
     input.addEventListener('change', () => {
@@ -47,6 +46,6 @@ const clearCompleted = (list) => {
   window.location.reload();
 };
 
-export { 
-    addTask, editToDo, deleteToDo, clearCompleted
- };
+export {
+  addTask, editToDo, deleteToDo, clearCompleted,
+};

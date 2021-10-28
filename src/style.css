@@ -183,12 +183,12 @@ body {
   display: flex;
 }
 
-.show-trash .menu {
-  display: none;
-}
-
 .menu {
   cursor: move;
+}
+
+.show-trash .menu {
+  display: none;
 }
 
 .to-do:nth-child(even) {
