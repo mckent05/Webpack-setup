@@ -6,6 +6,17 @@ import {
 
 let toDoList = [];
 
+const main = document.querySelector('.main');
+
+const element = document.createElement('div');
+element.classList.add('container');
+main.appendChild(element);
+
+const clear = document.createElement('button');
+clear.classList.add('clr-todo');
+clear.innerHTML = 'clear all completed';
+element.appendChild(clear);
+
 const createToDo = (doList, index) => {
   const list = document.createElement('li');
   list.setAttribute('draggable', 'true');
@@ -56,20 +67,9 @@ const createToDo = (doList, index) => {
   });
 };
 
-const main = document.querySelector('.main');
-
-const element = document.createElement('div');
-element.classList.add('container');
-main.appendChild(element);
-
 const container = document.createElement('ul');
 container.classList.add('list-cont');
 element.appendChild(container);
-
-const clear = document.createElement('button');
-clear.classList.add('clr-todo');
-clear.innerHTML = 'clear all completed';
-element.appendChild(clear);
 
 const inputDiv = document.createElement('div');
 inputDiv.classList.add('inputdiv');
