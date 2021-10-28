@@ -11,7 +11,7 @@
 
 
 # Live View
-> There is no live view for this project yet
+> [view Live](https://mckent05.github.io/Webpack-setup/)
 
 # Getting Started
 
