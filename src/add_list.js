@@ -1,4 +1,4 @@
-import { localstorage } from './list';
+import { localstorage } from './list.js';
 
 const addTask = (description, completed, index) => {
   const toDo = { description, completed, index };
@@ -38,7 +38,6 @@ const deleteToDo = (list, e) => {
   reArrangeIndex(list);
   localstorage(list);
   window.location.reload();
-  displayToDo(list);
 };
 
 const clearCompleted = (list) => {
@@ -46,7 +45,8 @@ const clearCompleted = (list) => {
   reArrangeIndex(list);
   localstorage(list);
   window.location.reload();
-  displayToDo();
 };
 
-export { addTask, editToDo, deleteToDo, clearCompleted };
+export { 
+    addTask, editToDo, deleteToDo, clearCompleted
+ };

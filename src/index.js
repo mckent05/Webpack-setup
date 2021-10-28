@@ -1,6 +1,8 @@
 import './style.css';
-import { taskCompleted, localstorage, displayAlert } from './list.js';
-import { addTask, editToDo, deleteToDo, clearCompleted } from './add_list.js';
+import { taskCompleted, localstorage } from './list.js';
+import {
+   addTask, editToDo, deleteToDo, clearCompleted
+   } from './add_list.js';
 
 let toDoList = [];
 
@@ -42,12 +44,23 @@ enterInput.placeholder = 'Add to your list ...';
 inputDiv.appendChild(enterInput);
 
 enterInput.addEventListener('change', () => {
-  let index = toDoList.length;
+  const index = toDoList.length;
   toDoList.push(addTask(enterInput.value, false, index + 1));
   createToDo(toDoList, index);
   localstorage(toDoList);
   enterInput.value = '';
 });
+
+const displayToDo = (list) => {
+  for (let i = 0; i <= list.length + 5; i += 1) {
+    list.forEach((item) => {
+      if (item.index === i) {
+        const myIndex = list.indexOf(item);
+        createToDo(list, myIndex);
+      }
+    });
+  }
+};
 
 const enterIcon = document.createElement('i');
 enterIcon.classList.add('fa', 'fa-sign-in-alt', 'enter');
@@ -65,15 +78,15 @@ const createToDo = (doList, index) => {
   checkBox.type = 'checkbox';
   list.appendChild(checkBox);
 
+  const btnDiv = document.createElement('div');
+  btnDiv.classList.add('btn-cont');
+  list.appendChild(btnDiv);
+
   checkBox.addEventListener('change', (e) => {
     taskCompleted(toDoList, index, e);
     localstorage(toDoList);
     btnDiv.classList.remove('show-trash');
   });
-
-  const btnDiv = document.createElement('div');
-  btnDiv.classList.add('btn-cont');
-  list.appendChild(btnDiv);
 
   const input = document.createElement('input');
   input.classList.add('task');
@@ -101,18 +114,6 @@ const createToDo = (doList, index) => {
   clear.addEventListener('click', () => {
     clearCompleted(toDoList);
   });
-};
-
-
-const displayToDo = (list) => {
-  for (let i = 0; i <= list.length + 5; i += 1) {
-    list.forEach((item) => {
-      if (item.index === i) {
-        const myIndex = list.indexOf(item);
-        createToDo(list, myIndex);
-      }
-    });
-  }
 };
 
 window.addEventListener('DOMContentLoaded', () => {
