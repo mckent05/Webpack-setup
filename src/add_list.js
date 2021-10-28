@@ -38,7 +38,6 @@ const deleteToDo = (list, e) => {
   localstorage(list);
   displayAlert('Task deleted', 'danger', 8000);
   window.location.reload();
-  
 };
 
 const clearCompleted = (list) => {

@@ -1,5 +1,5 @@
 import './style.css';
-import { 
+import {
   taskCompleted, localstorage, displayAlert,
 } from './list.js';
 import {

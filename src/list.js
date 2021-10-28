@@ -1,6 +1,6 @@
 const alert = document.querySelector('.alert');
 
-const displayAlert = (message, action,time) => {
+const displayAlert = (message, action, time) => {
   alert.innerHTML = message;
   alert.classList.add(`alert-${action}`);
   setTimeout(() => {
