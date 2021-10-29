@@ -105,11 +105,10 @@ enterInput.addEventListener('change', () => {
 });
 
 const displayToDo = (list) => {
-  for (let i = 0; i <= list.length + 5; i += 1) {
-    list.forEach((item) => {
+  for (let i = 0; i <= list.length; i += 1) {
+    list.forEach((item, index) => {
       if (item.index === i) {
-        const myIndex = list.indexOf(item);
-        createToDo(list, myIndex);
+        createToDo(list, index);
       }
     });
   }
