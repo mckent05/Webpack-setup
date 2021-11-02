@@ -1,7 +1,6 @@
-const sum = require('./sum');
+const capitalizeString = require('./sum');
 
-test('null', () => {
-  const n = 0;
-  expect(n).toBeGreaterThanOrEqual(3);
+test('should capitalize the first letter of the string', () => {
+  expect(capitalizeString('898989')).toEqual('Akinlade')
 });
 

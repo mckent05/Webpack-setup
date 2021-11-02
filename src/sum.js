@@ -1,5 +1,6 @@
-function sum(a, b) {
-    return a + b
+function capitalizeString(string) {
+    const capitalize = string.charAt(0).toUpperCase() + string.slice(1)
+    return capitalize
 }
 
-module.exports = sum
+module.exports = capitalizeString
