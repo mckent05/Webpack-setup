@@ -64,6 +64,69 @@ const createToDo = (doList, index) => {
     editToDo(toDoList, input, e, icon);
   });
 
+  let draggedItem
+  let dragOver
+  let dragenter
+  let dragleave
+  container.addEventListener('dragstart', (e) => {
+      draggedItem = e.target
+      console.log(draggedItem)
+      draggedItem.classList.add('drag')
+      // if(draggedItem.classList.contains('dropzone')) {
+      //   draggedItem.classList.remove('dropzone')
+        
+      // }
+      
+      // console.log(draggedItem)
+    
+    
+  })
+
+  
+  container.addEventListener('dragend', (e) => {
+    draggedItem.classList.remove('drag')
+  })
+
+  list.addEventListener('dragenter', (e) => {
+    dragenter=e.currentTarget
+    dragenter.classList.add('dropzone')
+    // draggedItem.classList.remove('dropzone')
+    // if (e.currentTarget.classList.contains('dropzone')) {
+    //   console.log(e.currentTarget.parentElement.removeChild(e.currentTarget))
+    // }
+  })
+
+  list.addEventListener('dragover', (e) => {
+    e.preventDefault()
+      // container.removeChild(draggedItem)
+      // container.removeChild(dragOver)
+      // draggedItem.parentNode.appendChild(dragOver)
+      draggedItem.classList.remove('dropzone')
+      dragOver=e.currentTarget
+      if(dragOver.classList.contains('dropzone')) {
+      e.currentTarget.parentElement.removeChild(e.currentTarget)
+
+    }
+  })
+
+  list.addEventListener('dragleave', (e) => {
+    const dropzone = e.currentTarget
+    if (dropzone.classList.contains('dropzone')) {
+      dragenter.classList.remove('dropzone')
+      container.appendChild(dragOver)
+    }
+  })
+
+ 
+
+  container.addEventListener('drop', (e) => {
+    // if(dropzone.classList.contains('dropzone')) {
+    
+    // }
+    console.log(dragenter)
+  })
+
+
   icon.addEventListener('click', (e) => {
     deleteToDo(toDoList, e);
   });
@@ -129,8 +192,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (item.completed === true) {
         const b = item.description;
         tasks.forEach((task) => {
+          const list = task.parentElement
           if (task.value === b) {
             task.classList.add('strike');
+            list.classList.add('remove-edit')
           }
         });
       }
