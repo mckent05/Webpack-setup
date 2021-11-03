@@ -65,7 +65,9 @@ const createToDo = (doList, index) => {
   });
 
   icon.addEventListener('click', (e) => {
-    deleteToDo(toDoList, e);
+    const desc = e.currentTarget.parentElement.nextSibling.value;
+    deleteToDo(toDoList, desc);
+    displayAlert('Task deleted', 'danger', 8000);
   });
 
   clear.addEventListener('click', () => {
@@ -95,13 +97,17 @@ enterInput.classList.add('add-todo');
 enterInput.placeholder = 'Add to your list ...';
 inputDiv.appendChild(enterInput);
 
-enterInput.addEventListener('change', () => {
+const addToDo = () => {
   const index = toDoList.length;
-  toDoList.push(addTask(enterInput.value, false, index + 1));
+  addTask(toDoList, enterInput.value, false, index + 1);
   createToDo(toDoList, index);
   localstorage(toDoList);
   displayAlert('Your task has been added', 'success', 3000);
   enterInput.value = '';
+};
+
+enterInput.addEventListener('change', () => {
+  addToDo();
 });
 
 const displayToDo = (list) => {
@@ -129,8 +135,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (item.completed === true) {
         const b = item.description;
         tasks.forEach((task) => {
+          const list = task.parentElement;
           if (task.value === b) {
             task.classList.add('strike');
+            list.classList.add('remove-edit');
           }
         });
       }
@@ -140,3 +148,5 @@ window.addEventListener('DOMContentLoaded', () => {
     localstorage(toDoList);
   }
 });
+
+export default addToDo;

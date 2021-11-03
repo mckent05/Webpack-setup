@@ -34,6 +34,9 @@ ALTERNATIVELY
 
 Additional description about the project and its features.
 
+## Testing the Project
+> To test this project by using jest, if you dont have jest installed run ```npm install --save-dev jest``` in your terminal. After this, run ```npm run test``` to run the test and wait for the results.
+
 ## Built With
 
 - HTML- Hypertext Markup Language
