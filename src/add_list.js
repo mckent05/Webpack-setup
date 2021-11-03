@@ -47,4 +47,6 @@ const clearCompleted = (list) => {
   window.location.reload();
 };
 
-export { addTask, editToDo, deleteToDo, clearCompleted };
+export {
+  addTask, editToDo, deleteToDo, clearCompleted,
+};
