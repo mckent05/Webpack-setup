@@ -4,7 +4,7 @@
 > This is ToDo list project.
 > I created this project using webpack.
 
-#About Project.
+# About Project.
 > This is a toDo list project.
 > This project displays a set of task already inputed in an array containing objects.
 > The tasks are displayed dynamically according to the index values in each of the objects.
