@@ -5,7 +5,6 @@ import {
 import {
   addTask, editToDo, deleteToDo, clearCompleted,
 } from './add_list.js';
-export { addToDo }
 
 let toDoList = [];
 
@@ -69,7 +68,6 @@ const createToDo = (doList, index) => {
     const desc = e.currentTarget.parentElement.nextSibling.value;
     deleteToDo(toDoList, desc);
     displayAlert('Task deleted', 'danger', 8000);
-    
   });
 
   clear.addEventListener('click', () => {
@@ -106,7 +104,7 @@ const addToDo = () => {
   localstorage(toDoList);
   displayAlert('Your task has been added', 'success', 3000);
   enterInput.value = '';
-}
+};
 
 enterInput.addEventListener('change', () => {
   addToDo();
@@ -137,7 +135,7 @@ window.addEventListener('DOMContentLoaded', () => {
       if (item.completed === true) {
         const b = item.description;
         tasks.forEach((task) => {
-          const list = task.parentElement
+          const list = task.parentElement;
           if (task.value === b) {
             task.classList.add('strike');
             list.classList.add('remove-edit');
@@ -150,3 +148,5 @@ window.addEventListener('DOMContentLoaded', () => {
     localstorage(toDoList);
   }
 });
+
+export default addToDo;

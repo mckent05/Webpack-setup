@@ -16,7 +16,11 @@ import { addTask, deleteToDo } from './add_list.js';
 describe('test CRUD function', () => {
   let taskList = [];
   function mockDom(tlist) {
+<<<<<<< HEAD
     document.body.innerHTML = `<div><ul class='cont'></ul></div>`;
+=======
+    document.body.innerHTML = '<div><ul class= \'cont\'></ul></div>';
+>>>>>>> 222b5c1b7f679411bf8be59dd7d82d0345847582
     const listCont = document.querySelector('.cont');
     let theList = tlist.map((item) => `<li>${item.description}</li>`);
     theList = theList.join('');
