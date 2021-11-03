@@ -14,15 +14,20 @@ import { addTask, deleteToDo } from './add_list.js';
 // });
 
 describe('test CRUD function', () => {
-  const taskList = [];
+  let taskList = [];
   function mockDom(tlist) {
-    document.body.innerHTML = `<div><ul class= 'cont'></ul></div>`;
+    document.body.innerHTML = `<div><ul class='cont'></ul></div>`;
     const listCont = document.querySelector('.cont');
     let theList = tlist.map((item) => `<li>${item.description}</li>`);
     theList = theList.join('');
     listCont.innerHTML = theList;
     const list = document.querySelectorAll('.cont li');
     return list;
+  }
+
+  function mockStorage(list) {
+      const localStorage = { taskList : [list]}
+      return localStorage.taskList
   }
 
   test('add task to to-do List', () => {
@@ -34,4 +39,12 @@ describe('test CRUD function', () => {
     addTask(taskList, 'irwrga', false, 5);
     expect(mockDom(taskList)).toHaveLength(6);
   });
+
+  test('remove from to-do List', () => {
+    taskList = deleteToDo(taskList,'samuel');
+    taskList = deleteToDo(taskList,'tope');
+    taskList = deleteToDo(taskList,'ife');
+    expect(mockDom(taskList)).toHaveLength(3);
+  });
+
 });
