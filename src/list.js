@@ -20,6 +20,7 @@ const taskCompleted = (list, index, e) => {
   if (e.currentTarget.checked === true) {
     inner.classList.add('strike');
     parent.classList.add('remove-edit');
+    inner.readOnly = true;
     displayAlert('great job! task completed', 'success', 3000);
   } else {
     inner.classList.remove('strike');

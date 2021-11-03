@@ -5,6 +5,7 @@ import {
 import {
   addTask, editToDo, deleteToDo, clearCompleted,
 } from './add_list.js';
+export { addToDo }
 
 let toDoList = [];
 
@@ -95,13 +96,17 @@ enterInput.classList.add('add-todo');
 enterInput.placeholder = 'Add to your list ...';
 inputDiv.appendChild(enterInput);
 
-enterInput.addEventListener('change', () => {
+const addToDo = () => {
   const index = toDoList.length;
   toDoList.push(addTask(enterInput.value, false, index + 1));
   createToDo(toDoList, index);
   localstorage(toDoList);
   displayAlert('Your task has been added', 'success', 3000);
   enterInput.value = '';
+}
+
+enterInput.addEventListener('change', () => {
+  addToDo()
 });
 
 const displayToDo = (list) => {
