@@ -66,7 +66,10 @@ const createToDo = (doList, index) => {
   });
 
   icon.addEventListener('click', (e) => {
-    deleteToDo(toDoList, e);
+    const desc = e.currentTarget.parentElement.nextSibling.value;
+    deleteToDo(toDoList, desc);
+    displayAlert('Task deleted', 'danger', 8000);
+    
   });
 
   clear.addEventListener('click', () => {
@@ -98,7 +101,7 @@ inputDiv.appendChild(enterInput);
 
 const addToDo = () => {
   const index = toDoList.length;
-  toDoList.push(addTask(enterInput.value, false, index + 1));
+  addTask(toDoList, enterInput.value, false, index + 1);
   createToDo(toDoList, index);
   localstorage(toDoList);
   displayAlert('Your task has been added', 'success', 3000);
@@ -106,7 +109,7 @@ const addToDo = () => {
 }
 
 enterInput.addEventListener('change', () => {
-  addToDo()
+  addToDo();
 });
 
 const displayToDo = (list) => {
@@ -137,7 +140,7 @@ window.addEventListener('DOMContentLoaded', () => {
           const list = task.parentElement
           if (task.value === b) {
             task.classList.add('strike');
-            list.classList.add('remove-edit')
+            list.classList.add('remove-edit');
           }
         });
       }
