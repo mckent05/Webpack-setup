@@ -1,18 +1,5 @@
 import { addTask, deleteToDo } from './add_list.js';
 
-// describe('test CRUD function', () => {
-//   const taskList = [];
-
-//   test('add task to to-do List', () => {
-//     expect(addTask(taskList, 'samuel', false, 0)).toHaveLength(1);
-//     expect(addTask(taskList, 'tope', false, 1)).toHaveLength(2);
-//     expect(addTask(taskList, 'tope', false, 2)).toHaveLength(3);
-//   });
-//   test('remove task from to-do', () => {
-//     expect(deleteToDo(taskList, 'samuel')).toHaveLength(2);
-//   });
-// });
-
 describe('test CRUD function', () => {
   let taskList = [];
   function mockDom(tlist) {
