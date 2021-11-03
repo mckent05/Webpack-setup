@@ -16,7 +16,7 @@ import { addTask, deleteToDo } from './add_list.js';
 describe('test CRUD function', () => {
   let taskList = [];
   function mockDom(tlist) {
-    document.body.innerHTML = `<div><ul class='cont'></ul></div>`;
+    document.body.innerHTML = '<div><ul class= \'cont\'></ul></div>';
     const listCont = document.querySelector('.cont');
     let theList = tlist.map((item) => `<li>${item.description}</li>`);
     theList = theList.join('');
@@ -36,10 +36,9 @@ describe('test CRUD function', () => {
   });
 
   test('remove from to-do List', () => {
-    taskList = deleteToDo(taskList,'samuel');
-    taskList = deleteToDo(taskList,'tope');
-    taskList = deleteToDo(taskList,'ife');
+    taskList = deleteToDo(taskList, 'samuel');
+    taskList = deleteToDo(taskList, 'tope');
+    taskList = deleteToDo(taskList, 'ife');
     expect(mockDom(taskList)).toHaveLength(3);
   });
-
 });
