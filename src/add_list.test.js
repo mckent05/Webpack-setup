@@ -39,7 +39,7 @@ describe('test CRUD function', () => {
     }
 
     clear() {
-      this.store= {};
+      this.store = {};
       return this.store;
     }
 
