@@ -40,8 +40,19 @@ const createToDo = (doList, index) => {
   list.appendChild(btnDiv);
 
   checkBox.addEventListener('change', (e) => {
-    taskCompleted(toDoList, index, e);
-    localstorage(toDoList);
+    toDoList[index].completed = e.currentTarget.checked;
+    const inner = e.currentTarget.nextSibling.nextSibling;
+    const parent = e.currentTarget.parentElement;
+    if (toDoList[index].completed === true) {
+      inner.classList.add('strike');
+      parent.classList.add('remove-edit');
+      inner.readOnly = true;
+      displayAlert('great job! task completed', 'success', 3000);
+    } else {
+      inner.classList.remove('strike');
+      parent.classList.remove('remove-edit');
+    }
+    taskCompleted(toDoList);
     btnDiv.classList.remove('show-trash');
   });
 
@@ -61,8 +72,15 @@ const createToDo = (doList, index) => {
 
   list.addEventListener('click', (e) => {
     btnDiv.classList.add('show-trash');
-    editToDo(toDoList, input, e, icon);
-  });
+    if (e.target.classList.contains('task')) {
+      input.readOnly = false;
+      const formerTask = input.value;
+      input.addEventListener('change', () => {
+        const newTask = input.value;
+        editToDo(toDoList, formerTask, newTask);
+       });
+    }
+  })
 
   icon.addEventListener('click', (e) => {
     const desc = e.currentTarget.parentElement.nextSibling.value;

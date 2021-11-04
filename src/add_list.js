@@ -6,24 +6,19 @@ const addTask = (list, description, completed, index) => {
   return list;
 };
 
-const editToDo = (list, input, e) => {
-  if (e.target.classList.contains('task')) {
-    input.readOnly = false;
-    const task = input.value;
-    input.addEventListener('change', () => {
-      list.forEach((item) => {
-        if (item.description === task) {
-          if (input.value === '') {
-            item.description = task;
-          } else {
-            item.description = input.value;
-          }
-        }
-      });
-      window.location.reload();
-      localstorage(list);
-    });
-  }
+const editToDo = (list, formerTask, newTask) => {
+  list.forEach((item) => {
+    if (item.description === formerTask) {
+      if (newTask === '') {
+        item.description = formerTask;
+      } else {
+        item.description = newTask;
+      }
+    }
+  });
+  window.location.reload();
+  localstorage(list);
+  return list;
 };
 
 const reArrangeIndex = (list) => {
@@ -45,8 +40,7 @@ const clearCompleted = (list) => {
   reArrangeIndex(list);
   localstorage(list);
   window.location.reload();
+  return list;
 };
 
-export {
-  addTask, editToDo, deleteToDo, clearCompleted,
-};
+export { addTask, editToDo, deleteToDo, clearCompleted };
