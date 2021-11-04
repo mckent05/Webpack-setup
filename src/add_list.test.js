@@ -39,7 +39,8 @@ describe('test CRUD function', () => {
     }
 
     clear() {
-      return {};
+      this.store= {};
+      return this.store;
     }
 
     getItem(key) {
@@ -51,7 +52,7 @@ describe('test CRUD function', () => {
 
     setItem(key, value) {
       this.store[key] = value;
-      return this.store[key]
+      return this.store[key];
     }
 
     removeItem(key) {
