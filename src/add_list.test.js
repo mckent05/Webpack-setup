@@ -12,6 +12,24 @@ describe('test CRUD function', () => {
     const list = document.querySelectorAll('.cont li');
     return list;
   }
+  function mockDomChecked(tlist) {
+    document.body.innerHTML = '<div><ul class= \'cont\'> </ul></div>';
+    const listCont = document.querySelector('.cont');
+    let theList = tlist.map((item) => `<li>
+    ${item.description}
+    <input class="check"  ${item.completed ? 'checked' : ''} type="checkbox">
+    </li>`);
+    theList = theList.join('');
+    listCont.innerHTML = theList;
+    const arr = [];
+    const checkBox = document.querySelectorAll('.cont .check');
+    checkBox.forEach((el) => {
+      if (!el.checked) {
+        arr.push({ completed: el.checked });
+      }
+    });
+    return arr;
+  }
 
   class LocalStorageMock {
     constructor() {
@@ -97,8 +115,10 @@ describe('test CRUD function', () => {
     });
   });
 
-  test('clear all completed tasks', () => {
-    taskList = clearCompleted(taskList);
+  test('clear all completed', () => {
+    taskList = mockDomChecked(taskList);
+    const list = clearCompleted(taskList);
+    expect(list).toHaveLength(taskList.length);
     localStorage.setItem('taskList', taskList);
     expect(localStorage.getItem('taskList')).toHaveLength(2);
     expect(localStorage.getItem('taskList')).not.toContainEqual({
@@ -106,6 +126,5 @@ describe('test CRUD function', () => {
       completed: true,
       index: 6,
     });
-    expect(mockDom(taskList)).toHaveLength(2);
   });
 });
