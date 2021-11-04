@@ -1,4 +1,6 @@
-import { addTask, deleteToDo, editToDo, clearCompleted } from './add_list.js';
+import { 
+  addTask, deleteToDo, editToDo, clearCompleted,
+} from './add_list.js';
 import { taskCompleted } from './list.js';
 
 describe('test CRUD function', () => {
@@ -37,19 +39,18 @@ describe('test CRUD function', () => {
     }
 
     clear() {
-      return (this.store = {});
+      return this.store = {};
     }
 
     getItem(key) {
       if (this.store[key] === null) {
         return [];
-      } else {
-        return this.store[key];
       }
+      return this.store[key];
     }
 
     setItem(key, value) {
-      return (this.store[key] = value);
+      return this.store[key] = value;
     }
 
     removeItem(key) {

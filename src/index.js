@@ -77,9 +77,9 @@ const createToDo = (doList, index) => {
       input.addEventListener('change', () => {
         const newTask = input.value;
         editToDo(toDoList, formerTask, newTask);
-       });
+      });
     }
-  })
+  });
 
   icon.addEventListener('click', (e) => {
     const desc = e.currentTarget.parentElement.nextSibling.value;
