@@ -28,7 +28,6 @@ const createToDo = (doList, index) => {
   list.setAttribute('draggable', 'true');
   list.classList.add('to-do');
   container.appendChild(list);
-
   const checkBox = document.createElement('input');
   checkBox.classList.add('check');
   checkBox.checked = doList[index].completed;

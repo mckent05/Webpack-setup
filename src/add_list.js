@@ -45,6 +45,7 @@ const clearCompleted = (list) => {
   reArrangeIndex(list);
   localstorage(list);
   window.location.reload();
+  return list;
 };
 
 export {
