@@ -43,6 +43,6 @@ const clearCompleted = (list) => {
   return list;
 };
 
-export { 
+export {
   addTask, editToDo, deleteToDo, clearCompleted,
 };

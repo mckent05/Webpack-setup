@@ -1,4 +1,4 @@
-import { 
+import {
   addTask, deleteToDo, editToDo, clearCompleted,
 } from './add_list.js';
 import { taskCompleted } from './list.js';
@@ -39,7 +39,7 @@ describe('test CRUD function', () => {
     }
 
     clear() {
-      return this.store = {};
+      return {};
     }
 
     getItem(key) {
@@ -50,7 +50,8 @@ describe('test CRUD function', () => {
     }
 
     setItem(key, value) {
-      return this.store[key] = value;
+      this.store[key] = value;
+      return this.store[key]
     }
 
     removeItem(key) {
