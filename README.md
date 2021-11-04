@@ -3,6 +3,7 @@
 
 > This is ToDo list project.
 > I created this project using webpack.
+> I did unit-testing for all my functionalities using Jest library
 
 # About Project.
 > This is a toDo list project.
@@ -50,6 +51,12 @@ Akinlade Temitope
 - Twitter: [@twitterhandle](https://twitter.com/mckent05)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/AkinladeTemitope)
 
+Ntazama Eloi
+
+- GitHub: [@githubhandle](https://github.com/ntazelo)
+- Twitter: [@twitterhandle](https://twitter.com/ntazamaE)
+
+
 
 ## 🤝 Contribution
 
@@ -64,6 +71,8 @@ Feel free to check the issues page
 5. Open a Pull Request
 
 ## Acknowledgements
+
+> i want to acknowledge my partner @ntazelo for his immense contribution to this project.
 
 
 ## Show your support
