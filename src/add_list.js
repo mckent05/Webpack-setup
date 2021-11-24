@@ -1,28 +1,24 @@
-import { displayAlert, localstorage } from './list.js';
+import { localstorage } from './list.js';
 
-const addTask = (description, completed, index) => {
+const addTask = (list, description, completed, index) => {
   const toDo = { description, completed, index };
-  return toDo;
+  list.push(toDo);
+  return list;
 };
 
-const editToDo = (list, input, e) => {
-  if (e.target.classList.contains('task')) {
-    input.readOnly = false;
-    const task = input.value;
-    input.addEventListener('change', () => {
-      list.forEach((item) => {
-        if (item.description === task) {
-          if (input.value === '') {
-            item.description = task;
-          } else {
-            item.description = input.value;
-          }
-        }
-      });
-      window.location.reload();
-      localstorage(list);
-    });
-  }
+const editToDo = (list, formerTask, newTask) => {
+  list.forEach((item) => {
+    if (item.description === formerTask) {
+      if (newTask === '') {
+        item.description = formerTask;
+      } else {
+        item.description = newTask;
+      }
+    }
+  });
+  window.location.reload();
+  localstorage(list);
+  return list;
 };
 
 const reArrangeIndex = (list) => {
@@ -31,13 +27,12 @@ const reArrangeIndex = (list) => {
   });
 };
 
-const deleteToDo = (list, e) => {
-  const desc = e.currentTarget.parentElement.nextSibling.value;
+const deleteToDo = (list, desc) => {
   list = list.filter((item) => item.description !== desc);
   reArrangeIndex(list);
   localstorage(list);
-  displayAlert('Task deleted', 'danger', 8000);
   window.location.reload();
+  return list;
 };
 
 const clearCompleted = (list) => {
@@ -45,6 +40,7 @@ const clearCompleted = (list) => {
   reArrangeIndex(list);
   localstorage(list);
   window.location.reload();
+  return list;
 };
 
 export {

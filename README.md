@@ -3,8 +3,9 @@
 
 > This is ToDo list project.
 > I created this project using webpack.
+> I did unit-testing for all my functionalities using Jest library
 
-#About Project.
+# About Project.
 > This is a toDo list project.
 > This project displays a set of task already inputed in an array containing objects.
 > The tasks are displayed dynamically according to the index values in each of the objects.
@@ -34,6 +35,9 @@ ALTERNATIVELY
 
 Additional description about the project and its features.
 
+## Testing the Project
+> To test this project by using jest, if you dont have jest installed run ```npm install --save-dev jest``` in your terminal. After this, run ```npm run test``` to run the test and wait for the results.
+
 ## Built With
 
 - HTML- Hypertext Markup Language
@@ -46,6 +50,12 @@ Akinlade Temitope
 - GitHub: [@githubhandle](https://github.com/mckent05)
 - Twitter: [@twitterhandle](https://twitter.com/mckent05)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/AkinladeTemitope)
+
+Ntazama Eloi
+
+- GitHub: [@githubhandle](https://github.com/ntazelo)
+- Twitter: [@twitterhandle](https://twitter.com/ntazamaE)
+
 
 
 ## 🤝 Contribution
@@ -61,6 +71,8 @@ Feel free to check the issues page
 5. Open a Pull Request
 
 ## Acknowledgements
+
+> i want to acknowledge my partner @ntazelo for his immense contribution to this project.
 
 
 ## Show your support

@@ -219,3 +219,8 @@ body {
   list-style-type: square;
   font-size: 20px;
 }
+
+.drag {
+  border: 3px solid red;
+  opacity: 1;
+}

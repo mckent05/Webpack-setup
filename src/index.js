@@ -28,7 +28,6 @@ const createToDo = (doList, index) => {
   list.setAttribute('draggable', 'true');
   list.classList.add('to-do', 'd-flex', 'a-center');
   container.appendChild(list);
-
   const checkBox = document.createElement('input');
   checkBox.classList.add('check');
   checkBox.checked = doList[index].completed;
@@ -40,8 +39,19 @@ const createToDo = (doList, index) => {
   list.appendChild(btnDiv);
 
   checkBox.addEventListener('change', (e) => {
-    taskCompleted(toDoList, index, e);
-    localstorage(toDoList);
+    toDoList[index].completed = e.currentTarget.checked;
+    const inner = e.currentTarget.nextSibling.nextSibling;
+    const parent = e.currentTarget.parentElement;
+    if (toDoList[index].completed === true) {
+      inner.classList.add('strike');
+      parent.classList.add('remove-edit');
+      inner.readOnly = true;
+      displayAlert('great job! task completed', 'success', 3000);
+    } else {
+      inner.classList.remove('strike');
+      parent.classList.remove('remove-edit');
+    }
+    taskCompleted(toDoList);
     btnDiv.classList.remove('show-trash');
   });
 
@@ -61,11 +71,20 @@ const createToDo = (doList, index) => {
 
   list.addEventListener('click', (e) => {
     btnDiv.classList.add('show-trash');
-    editToDo(toDoList, input, e, icon);
+    if (e.target.classList.contains('task')) {
+      input.readOnly = false;
+      const formerTask = input.value;
+      input.addEventListener('change', () => {
+        const newTask = input.value;
+        editToDo(toDoList, formerTask, newTask);
+      });
+    }
   });
 
   icon.addEventListener('click', (e) => {
-    deleteToDo(toDoList, e);
+    const desc = e.currentTarget.parentElement.nextSibling.value;
+    deleteToDo(toDoList, desc);
+    displayAlert('Task deleted', 'danger', 8000);
   });
 
   clear.addEventListener('click', () => {
@@ -95,13 +114,17 @@ enterInput.classList.add('add-todo', 'bor-none', 'outl-none');
 enterInput.placeholder = 'Add to your list ...';
 inputDiv.appendChild(enterInput);
 
-enterInput.addEventListener('change', () => {
+const addToDo = () => {
   const index = toDoList.length;
-  toDoList.push(addTask(enterInput.value, false, index + 1));
+  addTask(toDoList, enterInput.value, false, index + 1);
   createToDo(toDoList, index);
   localstorage(toDoList);
   displayAlert('Your task has been added', 'success', 3000);
   enterInput.value = '';
+};
+
+enterInput.addEventListener('change', () => {
+  addToDo();
 });
 
 const displayToDo = (list) => {
@@ -129,8 +152,10 @@ window.addEventListener('DOMContentLoaded', () => {
       if (item.completed === true) {
         const b = item.description;
         tasks.forEach((task) => {
+          const list = task.parentElement;
           if (task.value === b) {
             task.classList.add('strike');
+            list.classList.add('remove-edit');
           }
         });
       }
@@ -140,3 +165,5 @@ window.addEventListener('DOMContentLoaded', () => {
     localstorage(toDoList);
   }
 });
+
+export default addToDo;
