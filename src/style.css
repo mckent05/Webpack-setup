@@ -10,26 +10,49 @@
   box-sizing: border-box;
 }
 
-body {
-  max-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  justify-content: center;
+.bor-none {
+  border: none;
+}
+
+.outl-none {
+  outline: none;
+}
+
+.a-center {
   align-items: center;
 }
 
-.main {
-  justify-content: center;
-  align-items: center;
+.d-flex {
   display: flex;
-  width: 100%;
+}
+
+.t-transform {
+  text-transform: capitalize;
+}
+
+.f-col {
   flex-direction: column;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.j-center {
+  justify-content: center;
+}
+
+body {
+  max-width: 100vw;
+  row-gap: 20px;
+}
+
+.main {
+  width: 100%;
 }
 
 .alert {
   margin-top: 40px;
-  text-transform: capitalize;
   font-size: 25px;
   display: none;
 }
@@ -45,9 +68,7 @@ body {
 }
 
 .container {
-  display: flex;
   margin: 2% auto;
-  flex-direction: column;
   outline: 1px solid whitesmoke;
   box-shadow: 2px 4px 6px rgb(114, 110, 110);
   width: 70%;
@@ -60,9 +81,7 @@ body {
 }
 
 .title-cont {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   border-bottom: 1px solid grey;
   margin-top: 10px;
@@ -70,9 +89,7 @@ body {
 }
 
 .header-title {
-  display: flex;
   text-align: center;
-  text-transform: capitalize;
   order: 1;
   position: relative;
   width: 70%;
@@ -85,19 +102,15 @@ body {
 
 .inputdiv {
   width: 100%;
-  display: flex;
   justify-content: space-between;
   order: 2;
   column-gap: 10px;
-  align-items: center;
   padding: 12px 10px;
 }
 
 .add-todo {
   order: 1;
   margin: 10px;
-  border: none;
-  outline: none;
   width: 80%;
   font-size: 20px;
   font-style: italic;
@@ -106,7 +119,6 @@ body {
 
 .enter {
   order: 2;
-  display: flex;
   transform: scale(1.5);
   color: #0f0;
 }
@@ -115,19 +127,11 @@ body {
   padding: 0;
   list-style: none;
   order: 3;
-  display: flex;
-  flex-direction: column;
 }
 
 .clr-todo {
   order: 4;
-  border: none;
-  outline: none;
-  text-transform: capitalize;
   background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 20px 8px;
   font-size: 20px;
   color: grey;
@@ -145,10 +149,8 @@ body {
 }
 
 .to-do {
-  display: flex;
   column-gap: 15px;
   justify-content: flex-start;
-  align-items: center;
   padding: 10px;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
@@ -162,11 +164,7 @@ body {
 
 .task {
   width: 80%;
-  display: flex;
-  text-transform: capitalize;
   font-size: 20px;
-  outline: none;
-  border: none;
   background-color: inherit;
   order: 2;
   word-wrap: break-word;
@@ -174,7 +172,6 @@ body {
 
 .btn-cont {
   width: 10%;
-  display: flex;
   justify-content: flex-end;
   order: 3;
 }
@@ -205,8 +202,6 @@ body {
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
   row-gap: 10px;
 }
 
@@ -214,7 +209,6 @@ body {
   color: lime;
   text-align: center;
   font-size: 35px;
-  text-transform: capitalize;
   text-decoration: underline;
   text-decoration-color: seagreen;
 }
